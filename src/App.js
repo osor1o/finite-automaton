@@ -11,6 +11,8 @@ import {
 } from 'grommet';
 import { FormClose, Notification } from 'grommet-icons';
 
+import Graphs from './components/Graphs';
+
 const theme = {
   global: {
     colors: {
@@ -55,7 +57,7 @@ const App = () => {
             </AppBar>
             <Box direction='row' flex overflow={{ horizontal: 'hidden' }}>
               <Box flex align='center' justify='center'>
-                app body
+                <Graphs />
               </Box>
               {(!showSidebar || size !== 'small') ? (
                 <Collapsible direction="horizontal" open={showSidebar}>
