@@ -6,7 +6,6 @@ import { handleCloseSideBar } from './actions';
 
 import {
   Box,
-  Collapsible,
   Button,
   Layer,
   ResponsiveContext,
@@ -14,28 +13,44 @@ import {
 
 import { FormClose } from 'grommet-icons';
 
-export default (props) => {
-  const { children } = props;
+import If from '../../Common/If';
+import Inputs from '../Inputs';
+import States from '../States';
+import Table from '../Table';
+import Execution from '../Execution';
+import Start from '../Start';
+
+const Children = () => {
+  return (
+    <Box fill pad="large" overflow="auto">
+      <States />
+      <Inputs />
+      <Table />
+      <Execution />
+      <Start />
+    </Box>
+  );
+}
+
+export default () => {
   const open = useSelector((state) => state.sideBar.open);
   const dispatch = useDispatch();
 
   return (
     <ResponsiveContext.Consumer>
       {(size) => (
-        (!open || size !== 'small') ? (
-          <Collapsible direction="horizontal" open={open}>
+        <>
+          <If test={size !== 'small'}>
             <Box
               flex
-              width='medium'
               background='light-2'
-              elevation='small'
               align='center'
               justify='center'
             >
-              sidebar
-        </Box>
-          </Collapsible>
-        ) : (
+              <Children />
+            </Box>
+          </If>
+          <If test={open && size === 'small'}>
             <Layer>
               <Box
                 background='light-2'
@@ -55,9 +70,11 @@ export default (props) => {
                 align='center'
                 justify='center'
               >
-                {children}
-          </Box>
-            </Layer>)
+                <Children />
+              </Box>
+            </Layer>
+          </If>
+        </>
       )}
     </ResponsiveContext.Consumer>
   );

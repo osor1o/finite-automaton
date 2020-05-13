@@ -13,8 +13,8 @@ import theme from './theme';
 import reducers from './reducers';
 
 import AppBar from '../Components/AppBar';
-import Graphs from '../Components/Graphs';
-import SideBar from '../Components/Containers/SideBar/Index';
+import Graphs from '../Components/Containers/Graphs';
+import SideBar from '../Components/Containers/SideBar';
 
 const store = createStore(reducers);
 
