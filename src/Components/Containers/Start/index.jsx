@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { setInitialState } from './actions';
 
 import { Select, Button } from 'grommet';
 
 import SidebarBox from '../../Common/SidebarBox';
 
 export default () => {
+  const dispacth = useDispatch();
   const states = useSelector(({ state }) => state.list);
-  const [initialState, setInitialState] = useState('');
+  const initialState = useSelector(({ start }) => start.initialState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +25,7 @@ export default () => {
           options={states}
           placeholder="Initial State"
           value={initialState}
-          onChange={({ option }) => setInitialState(option)}
+          onChange={({ option }) => dispacth(setInitialState(option))}
         />
         <Button type="submit" label="Run" primary />
         <Button label="Clear" />
