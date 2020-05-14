@@ -5,6 +5,5 @@ export const addExecution = (newExecution) => {
 };
 
 export const removeExecution = (toRemoveIndex) => {
-  console.log(toRemoveIndex);
   return { type: 'REMOVE_EXECUTION', payload: toRemoveIndex };
 }
