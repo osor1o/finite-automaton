@@ -12,8 +12,15 @@ export const setBeforeState = (newBeforeState) => {
   return { type: 'SET_BEFORE_STATE', payload: newBeforeState };
 }
 
-export const setCurrentInput = (newCurrentInput) => {
-  return { type: 'SET_CURRENT_INPUT', payload: newCurrentInput };
+export const setCurrentInput = (newCurrentInputIndex, newCurrentInputValue) => {
+  return {
+    type: 'SET_CURRENT_INPUT',
+    payload: { index: newCurrentInputIndex, value: newCurrentInputValue }
+  };
+}
+
+export const setSubmitting = (newSubmitting) => {
+  return { type: 'SET_SUBMITTING', payload: newSubmitting };
 }
 
 export const clearStart = () => {

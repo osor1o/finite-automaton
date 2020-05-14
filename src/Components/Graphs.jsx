@@ -45,7 +45,8 @@ export default (props) => {
   const edges = tableItems.map((tableItem) => {
     const baseReturn = { from: tableItem.s1, to: tableItem.s2, label: tableItem.i };
     if (
-      startState.currentInput === tableItem.i
+      startState.currentInput
+      && startState.currentInput.value === tableItem.i
       && startState.currentState === tableItem.s2
       && startState.beforeState === tableItem.s1
     )
