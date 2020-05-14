@@ -1,13 +1,15 @@
 const INITIAL_STATE = {
-  items: [],
+  items: [
+    { s1: 'A', i: '0', s2: 'A' },
+    { s1: 'B', i: '1', s2: 'A' },
+    { s1: 'A', i: '1', s2: 'B' },
+  ],
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
     case 'ADD_TABLE':
-      if (!state.list.includes(action.payload))
-        return { ...state, list: [...state.items, action.payload ] };
-      return state;
+      return { ...state, items: [...state.items, action.payload ] };
     default:
       return state;
   }

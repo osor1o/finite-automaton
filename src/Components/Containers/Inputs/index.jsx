@@ -26,8 +26,7 @@ export default () => {
           data={inputs}
         />
         <TextInput
-          name="name"
-          placeholder="State"
+          placeholder="Input"
           value={input}
           onChange={({ target }) => setInput(target.value)}
         />

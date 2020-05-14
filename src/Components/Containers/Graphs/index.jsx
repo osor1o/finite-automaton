@@ -25,12 +25,12 @@ import { v4 as uuidv4 } from 'uuid'
 
 export default (props) => {
   const { height, width } = props;
-
   const states = useSelector(({ state }) => state.list);
+  const tableItems = useSelector(({ table }) => table.items);
 
   const graph = {
-    nodes: states.map((state, index) => ({ id: index, label: state })),
-    edges: [],
+    nodes: states.map((state) => ({ id: state, label: state })),
+    edges: tableItems.map((tableItem) => ({ from: tableItem.s1, to: tableItem.s2, label: tableItem.i })),
   };
 
   const options = {
