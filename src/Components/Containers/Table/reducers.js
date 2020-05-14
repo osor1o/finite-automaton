@@ -8,10 +8,10 @@ export default (state = INITIAL_STATE, action) => {
       const invalidTableItem = state.items.find((item) => {
         const existStateAndInput = item.s1 === action.payload.s1 && item.i === action.payload.i;
         if (existStateAndInput)
-          return false;
+          return true;
         if (existStateAndInput && item.s2 === action.payload.s2)
-          return false
-        return true;
+          return true
+        return false;
       });
       if (!Boolean(invalidTableItem))
         return { ...state, items: [...state.items, action.payload ] };
