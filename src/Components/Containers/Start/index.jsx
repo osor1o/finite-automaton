@@ -1,22 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setInitialState } from './actions';
+import {
+  setInitialState, setCurrentState, setBeforeState,
+  setCurrentInput, clearStart
+} from './actions';
 
-import { Select, Button } from 'grommet';
+import { Select, Button, RangeInput, Box } from 'grommet';
+
+import { Dashboard } from "grommet-icons";
 
 import SidebarBox from '../../Common/SidebarBox';
 
 export default () => {
-  const dispacth = useDispatch();
+  const dispatch = useDispatch();
+  const start = useSelector(({ start }) => start);
   const states = useSelector(({ state }) => state.list);
-  const initialState = useSelector(({ start }) => start.initialState);
+  const executions = useSelector(({ execution }) => execution.list);
+  const tableItems = useSelector(({ table }) => table.items);
+  const [speed, setSpeed] = useState(3);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const sleep = () => new Promise((resolve) => setTimeout(resolve, speed * 1000));
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(initialState);
-  }
+    if (start.initialState === undefined)
+      return;
+    setSubmitting(true);
+    dispatch(setInitialState(start.initialState));
+    let cacheCurrentState = start.initialState;
+    for (const [index, execution] of executions.entries()) {
+      if (index !== 0)
+        await sleep();
+      const currentState = cacheCurrentState;
+      const tableItem = tableItems.find((item) => (
+        item.s1 === currentState && item.i === execution
+      ));
+      if (!tableItem) {
+        alert('STATE NOT FOUND');
+        break;
+      }
+      dispatch(setBeforeState(cacheCurrentState));
+      cacheCurrentState = tableItem.s2;
+      dispatch(setCurrentState(cacheCurrentState));
+      dispatch(setCurrentInput(execution));
+    }
+    setSubmitting(false);
+  };
+
+  const handleClear = () => {
+    dispatch(clearStart());
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -24,11 +60,22 @@ export default () => {
         <Select
           options={states}
           placeholder="Initial State"
-          value={initialState}
-          onChange={({ option }) => dispacth(setInitialState(option))}
+          value={start.initialState}
+          onChange={({ option }) => dispatch(setInitialState(option))}
         />
-        <Button type="submit" label="Run" primary />
-        <Button label="Clear" />
+        <Box direction="row" gap="small">
+          <Dashboard />
+          <RangeInput
+            value={speed}
+            onChange={({ target }) => setSpeed(target.value)}
+            max={8}
+            min={1}
+            step={1}
+          />
+        </Box>
+        <Button type="submit" label="Run" primary disabled={submitting} />
+        <Button label="Stop" />
+        <Button label="Clear" onClick={handleClear} disabled={submitting} />
       </SidebarBox>
     </form>
   );
