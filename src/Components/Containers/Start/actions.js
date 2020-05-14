@@ -12,10 +12,10 @@ export const setBeforeState = (newBeforeState) => {
   return { type: 'SET_BEFORE_STATE', payload: newBeforeState };
 }
 
-export const setCurrentInput = (newCurrentInputIndex, newCurrentInputValue) => {
+export const setLastInput = (newLastInputIndex, newLastInputValue) => {
   return {
     type: 'SET_CURRENT_INPUT',
-    payload: { index: newCurrentInputIndex, value: newCurrentInputValue }
+    payload: { index: newLastInputIndex, value: newLastInputValue }
   };
 }
 

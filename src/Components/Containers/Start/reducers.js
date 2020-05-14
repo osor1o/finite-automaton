@@ -3,7 +3,7 @@ const INITIAL_STATE = {
   initialState: undefined,
   beforeState: undefined,
   currentState: undefined,
-  currentInput: undefined,
+  lastInput: undefined,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -13,14 +13,14 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         initialState: action.payload,
         currentState: action.payload,
-        currentInput: undefined
+        lastInput: undefined
       };
     case 'SET_CURRENT_STATE':
       return { ...state, currentState: action.payload };
     case 'SET_BEFORE_STATE':
       return { ...state, beforeState: action.payload };
     case 'SET_CURRENT_INPUT':
-      return { ...state, currentInput: action.payload };
+      return { ...state, lastInput: action.payload };
     case 'CLEAR_START':
       return INITIAL_STATE;
     case 'SET_SUBMITTING':

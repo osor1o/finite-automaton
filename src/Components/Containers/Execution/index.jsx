@@ -44,9 +44,9 @@ export default () => {
                 {item}
               </Box>
             );
-            if (start.currentInput === undefined && index === 0)
+            if (start.lastInput === undefined && index === 0)
               return baseReturn
-            if (start.currentInput && start.currentInput.index === index)
+            if (start.lastInput && start.lastInput.index === index)
               return baseReturn
             return item;
           }}

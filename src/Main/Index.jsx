@@ -32,7 +32,7 @@ export default () => {
         height: `${bodyRef.current.offsetHeight}px`,
       })
     }
-  }, [bodyRef])
+  }, [bodyRef]);
 
   return (
     <Provider store={store}>

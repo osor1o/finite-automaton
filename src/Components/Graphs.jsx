@@ -2,7 +2,7 @@ import React from "react";
 
 import { useSelector } from 'react-redux';
 
-import { Box } from 'grommet';
+import { Box, Text } from 'grommet';
 
 import Graph from "react-graph-vis";
 
@@ -29,15 +29,15 @@ const INITIAL_OPTIONS = {
 
 export default (props) => {
   const { height, width } = props;
-  const startState = useSelector(({ start }) => start);
+  const start = useSelector(({ start }) => start);
   const states = useSelector(({ state }) => state.list);
   const tableItems = useSelector(({ table }) => table.items);
 
   const nodes = states.map((state) => {
     const baseReturn = { id: state, label: state };
-    if (startState.currentState === state)
+    if (start.currentState === state)
       return { ...baseReturn, color: { border: '#7159c1', }, borderWidth: 3 };
-    if (startState.initialState === state)
+    if (start.initialState === state)
       return { ...baseReturn, borderWidth: 3 };
     return baseReturn;
   });
@@ -45,10 +45,10 @@ export default (props) => {
   const edges = tableItems.map((tableItem) => {
     const baseReturn = { from: tableItem.s1, to: tableItem.s2, label: tableItem.i };
     if (
-      startState.currentInput
-      && startState.currentInput.value === tableItem.i
-      && startState.currentState === tableItem.s2
-      && startState.beforeState === tableItem.s1
+      start.lastInput
+      && start.lastInput.value === tableItem.i
+      && start.currentState === tableItem.s2
+      && start.beforeState === tableItem.s1
     )
       return { ...baseReturn, width: 3 };
     return baseReturn;
@@ -65,8 +65,20 @@ export default (props) => {
     width,
   };
 
+  const lastInput = (start.lastInput)
+    ? start.lastInput.value
+    : null;
+
   return (
     <Box>
+      <Box pad="small" flex="grow" gap="small" background='light-2'>
+        <Text size="large">
+          Current State: { start.currentState }
+        </Text>
+        <Text size="large">
+          Last Input: { lastInput }
+        </Text>
+      </Box>
       <Graph key={uuidv4()} graph={graph} options={options} />
     </Box>
   );
