@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Text } from 'grommet';
 
-import If from '../Common/If';
+import If from './If';
 
 export default ({ children, title }) => {
   return (

@@ -2,11 +2,11 @@ import React from 'react';
 
 import { Select, Button } from 'grommet';
 
-import SideBarBox from '../../Common/SideBarBox';
+import SidebarBox from '../../Common/SidebarBox';
 
 export default () => {
   return (
-    <SideBarBox title="Start">
+    <SidebarBox title="Start">
       <Select
         options={['small', 'medium', 'large']}
         placeholder="Initial State"
@@ -15,6 +15,6 @@ export default () => {
       />
       <Button label="Run" primary />
       <Button label="Clear" />
-    </SideBarBox>
+    </SidebarBox>
   );
 }

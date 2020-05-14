@@ -14,7 +14,7 @@ import reducers from './reducers';
 
 import AppBar from '../Components/AppBar';
 import Graphs from '../Components/Containers/Graphs';
-import SideBar from '../Components/Containers/SideBar';
+import Sidebar from '../Components/Containers/Sidebar';
 
 const store = createStore(reducers);
 
@@ -40,7 +40,7 @@ export default () => {
         <Box fill>
           <AppBar />
           <Box direction='row' flex overflow={{ horizontal: 'hidden' }}>
-            <SideBar />
+            <Sidebar />
             <Box
               flex
               align='center'

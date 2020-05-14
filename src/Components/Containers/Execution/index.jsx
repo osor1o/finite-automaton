@@ -2,11 +2,11 @@ import React from 'react';
 
 import { List, Select, Button } from 'grommet';
 
-import SideBarBox from '../../Common/SideBarBox';
+import SidebarBox from '../../Common/SidebarBox';
 
 export default () => {
   return (
-    <SideBarBox title="Execution">
+    <SidebarBox title="Execution">
       <List
         data={[
           'test',
@@ -20,6 +20,6 @@ export default () => {
         // onChange={({ option }) => setValue(option)}
       />
       <Button label="+" primary />
-    </SideBarBox>
+    </SidebarBox>
   );
 }

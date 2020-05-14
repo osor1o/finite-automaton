@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { handleCloseSideBar } from './actions';
+import { handleCloseSidebar } from './actions';
 
 import {
   Box,
@@ -33,7 +33,7 @@ const Children = () => {
 }
 
 export default () => {
-  const open = useSelector((state) => state.sideBar.open);
+  const open = useSelector((state) => state.sidebar.open);
   const dispatch = useDispatch();
 
   return (
@@ -46,6 +46,7 @@ export default () => {
               background='light-2'
               align='center'
               justify='center'
+              width={{ max: '350px' }}
             >
               <Children />
             </Box>
@@ -61,7 +62,7 @@ export default () => {
               >
                 <Button
                   icon={<FormClose />}
-                  onClick={() => dispatch(handleCloseSideBar())}
+                  onClick={() => dispatch(handleCloseSidebar())}
                 />
               </Box>
               <Box

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { List, TextInput, Button } from 'grommet';
 
-import SideBarBox from '../../Common/SideBarBox';
+import SidebarBox from '../../Common/SidebarBox';
 
 const data = [
   'test',
@@ -11,12 +11,12 @@ const data = [
 
 export default () => {
   return (
-    <SideBarBox title="States">
+    <SidebarBox title="States">
       <List
         data={data}
       />
       <TextInput name="name" placeholder="State" />
       <Button label="+" primary />
-    </SideBarBox>
+    </SidebarBox>
   );
 }

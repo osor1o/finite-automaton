@@ -2,7 +2,7 @@ import React from 'react';
 
 import {useDispatch} from 'react-redux';
 
-import {handleOpenSidebar} from './Containers/SideBar/actions';
+import {handleOpenSidebar} from './Containers/Sidebar/actions';
 
 import {Box, Heading, Button, ResponsiveContext} from 'grommet';
 

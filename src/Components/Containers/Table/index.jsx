@@ -5,11 +5,11 @@ import {
   Select, Button
 } from 'grommet';
 
-import SideBarBox from '../../Common/SideBarBox';
+import SidebarBox from '../../Common/SidebarBox';
 
 export default () => {
   return (
-    <SideBarBox title="Table">
+    <SidebarBox title="Table">
       <Table>
         <TableHeader>
           <TableRow>
@@ -57,6 +57,6 @@ export default () => {
         // onChange={({ option }) => setValue(option)}
       />
       <Button label="+" primary />
-    </SideBarBox>
+    </SidebarBox>
   );
 }
