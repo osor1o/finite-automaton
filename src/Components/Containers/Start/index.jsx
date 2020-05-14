@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { Select, Button } from 'grommet';
 
 import SidebarBox from '../../Common/SidebarBox';
 
 export default () => {
-  const dispatch = useDispatch();
   const states = useSelector(({ state }) => state.list);
   const [initialState, setInitialState] = useState('');
 
