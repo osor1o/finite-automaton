@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  list: ['1', '1', '0'],
+  list: [],
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -9,6 +9,8 @@ export default (state = INITIAL_STATE, action) => {
     case 'REMOVE_EXECUTION':
       const list = state.list.filter((item, index) => action.payload !== index);
       return { ...state, list }
+    case 'CLEAR_EXECUTION':
+      return INITIAL_STATE;
     default:
       return state;
   }

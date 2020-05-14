@@ -7,3 +7,7 @@ export const addExecution = (newExecution) => {
 export const removeExecution = (toRemoveIndex) => {
   return { type: 'REMOVE_EXECUTION', payload: toRemoveIndex };
 }
+
+export const clearExecution = () => {
+  return { type: 'CLEAR_EXECUTION' };
+}

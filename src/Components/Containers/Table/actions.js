@@ -7,3 +7,7 @@ export const addTableItem = (newTableItem) => {
     return { type: 'ADD_TABLE', payload: newTableItem };
   return { type: null }
 };
+
+export const clearTable = () => {
+  return { type: 'CLEAR_TABLE' };
+}

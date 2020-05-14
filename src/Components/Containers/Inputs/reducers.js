@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  list: ['0', '1'],
+  list: [],
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -8,6 +8,8 @@ export default (state = INITIAL_STATE, action) => {
       if (!state.list.includes(action.payload))
         return { ...state, list: [...state.list, action.payload ] };
       return state;
+    case 'CLEAR_INPUT':
+      return INITIAL_STATE;
     default:
       return state;
   }

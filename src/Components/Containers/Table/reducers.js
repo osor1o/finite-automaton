@@ -1,10 +1,5 @@
 const INITIAL_STATE = {
-  items: [
-    { s1: 'A', i: '0', s2: 'A' },
-    { s1: 'A', i: '1', s2: 'B' },
-    { s1: 'B', i: '1', s2: 'C' },
-    { s1: 'C', i: '0', s2: 'A' },
-  ],
+  items: [],
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -21,6 +16,8 @@ export default (state = INITIAL_STATE, action) => {
       if (!Boolean(invalidTableItem))
         return { ...state, items: [...state.items, action.payload ] };
       return state;
+    case 'CLEAR_TABLE':
+      return INITIAL_STATE;
     default:
       return state;
   }

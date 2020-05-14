@@ -7,6 +7,14 @@ import {
   setCurrentInput, setSubmitting, clearStart
 } from './actions';
 
+import { clearState } from '../States/actions';
+
+import { clearInput } from '../Inputs/actions';
+
+import { clearTable } from '../Table/actions';
+
+import { clearExecution } from '../Execution/actions';
+
 import { Select, Button, RangeInput, Box } from 'grommet';
 
 import { Dashboard } from "grommet-icons";
@@ -50,6 +58,10 @@ export default () => {
   };
 
   const handleClear = () => {
+    dispatch(clearState());
+    dispatch(clearInput());
+    dispatch(clearTable());
+    dispatch(clearExecution());
     dispatch(clearStart());
   };
 
