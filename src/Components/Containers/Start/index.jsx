@@ -28,7 +28,6 @@ export default () => {
   const executions = useSelector(({ execution }) => execution.list);
   const tableItems = useSelector(({ table }) => table.items);
   const [speed, setSpeed] = useState(3);
-  let stop = false;
 
   const sleep = () => new Promise((resolve) => setTimeout(resolve, speed * 1000));
 
@@ -40,8 +39,6 @@ export default () => {
     dispatch(setInitialState(start.initialState));
     let cacheCurrentState = start.initialState;
     for (const [index, execution] of executions.entries()) {
-      if (stop)
-        break;
       if (index !== 0)
         await sleep();
       const currentState = cacheCurrentState;
@@ -68,11 +65,6 @@ export default () => {
     dispatch(clearStart());
   };
 
-  const handleStop = () => {
-    stop = true;
-    setSubmitting(false);
-  }
-
   return (
     <form onSubmit={handleSubmit}>
       <SidebarBox title="Start">
@@ -93,7 +85,6 @@ export default () => {
           />
         </Box>
         <Button type="submit" label="Run" primary disabled={start.submitting} />
-        <Button label="Stop" onClick={handleStop} />
         <Button label="Clear" onClick={handleClear} disabled={start.submitting} />
       </SidebarBox>
     </form>
