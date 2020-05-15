@@ -29,7 +29,7 @@ export default () => {
   const tableItems = useSelector(({ table }) => table.items);
   const [speed, setSpeed] = useState(3);
 
-  const sleep = () => new Promise((resolve) => setTimeout(resolve, speed * 1000));
+  const sleep = () => new Promise((resolve) => setTimeout(resolve, (9 - speed) * 1000));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
