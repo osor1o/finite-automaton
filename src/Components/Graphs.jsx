@@ -47,7 +47,7 @@ export default () => {
             height: `${bodyRef.current.offsetHeight}px`,
           })
         })
-      }, 100);
+      }, 1000);
     }
   }, [bodyRef]);
 
