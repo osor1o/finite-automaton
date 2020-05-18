@@ -7,6 +7,8 @@ import {
   setLastInput, setSubmitting, clearStart
 } from './actions';
 
+import { handleCloseSidebar } from '../Sidebar/actions';
+
 import { clearState } from '../States/actions';
 
 import { clearInput } from '../Inputs/actions';
@@ -35,6 +37,7 @@ export default () => {
     e.preventDefault();
     if (start.initialState === undefined)
       return;
+    dispatch(handleCloseSidebar());
     dispatch(setSubmitting(true));
     dispatch(setInitialState(start.initialState));
     let cacheCurrentState = start.initialState;
