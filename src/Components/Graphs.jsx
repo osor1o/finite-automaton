@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useLayoutEffect, useRef } from "react";
 
 import { useSelector } from 'react-redux';
 
@@ -27,11 +27,27 @@ const INITIAL_OPTIONS = {
   },
 };
 
-export default (props) => {
-  const { height, width } = props;
+export default () => {
   const start = useSelector(({ start }) => start);
   const states = useSelector(({ state }) => state.list);
   const tableItems = useSelector(({ table }) => table.items);
+
+  const bodyRef = useRef(null);
+  const [graphsDimensions, setGraphsDimensions] = useState({
+    width: '600px',
+    height: '600px'
+  });
+
+  useLayoutEffect(() => {
+    if (bodyRef.current) {
+      setTimeout(() => {
+        setGraphsDimensions({
+          width: `${bodyRef.current.offsetWidth}px`,
+          height: `${bodyRef.current.offsetHeight}px`,
+        })
+      }, 100);
+    }
+  }, [bodyRef]);
 
   const nodes = states.map((state) => {
     const baseReturn = { id: state, label: state };
@@ -61,8 +77,8 @@ export default (props) => {
 
   const options = {
     ...INITIAL_OPTIONS,
-    height,
-    width,
+    height: graphsDimensions.height,
+    width: graphsDimensions.width,
   };
 
   const lastInput = (start.lastInput)
@@ -70,8 +86,8 @@ export default (props) => {
     : null;
 
   return (
-    <Box>
-      <Box pad="small" flex="grow" gap="small" background='light-2'>
+    <Box full flex overflow="hidden">
+      <Box pad="small" gap="small" background='light-2'>
         <Text size="large">
           Current State: { start.currentState }
         </Text>
@@ -79,7 +95,9 @@ export default (props) => {
           Last Input: { lastInput }
         </Text>
       </Box>
-      <Graph key={uuidv4()} graph={graph} options={options} />
+      <Box flex ref={bodyRef}>
+        <Graph key={uuidv4()} graph={graph} options={options} />
+      </Box>
     </Box>
   );
 }

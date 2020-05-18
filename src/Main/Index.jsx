@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect } from 'react';
+import React from 'react';
 
 import { createStore } from 'redux';
 
@@ -19,21 +19,6 @@ import Sidebar from '../Components/Containers/Sidebar';
 const store = createStore(reducers);
 
 export default () => {
-  const bodyRef = useRef(null);
-  const [graphsDimensions, setGraphsDimensions] = useState({
-    width: '600px',
-    height: '600px'
-  });
-
-  useLayoutEffect(() => {
-    if (bodyRef.current) {
-      setGraphsDimensions({
-        width: `${bodyRef.current.offsetWidth}px`,
-        height: `${bodyRef.current.offsetHeight}px`,
-      })
-    }
-  }, [bodyRef]);
-
   return (
     <Provider store={store}>
       <Grommet theme={theme} full>
@@ -41,18 +26,7 @@ export default () => {
           <AppBar />
           <Box direction='row' flex overflow={{ horizontal: 'hidden' }}>
             <Sidebar />
-            <Box
-              flex
-              align='center'
-              justify='center'
-              ref={bodyRef}
-              overflow='hidden'
-            >
-              <Graphs
-                width={graphsDimensions.width}
-                height={graphsDimensions.height}
-              />
-            </Box>
+            <Graphs />
           </Box>
         </Box>
       </Grommet>
