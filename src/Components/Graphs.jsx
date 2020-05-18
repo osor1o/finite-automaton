@@ -40,14 +40,15 @@ export default () => {
 
   useLayoutEffect(() => {
     if (bodyRef.current) {
-      setTimeout(() => {
-        window.addEventListener('resize', () => {
-          setGraphsDimensions({
-            width: `${bodyRef.current.offsetWidth}px`,
-            height: `${bodyRef.current.offsetHeight}px`,
-          })
+      const resizeBox = () => {
+        setGraphsDimensions({
+          width: `${bodyRef.current.offsetWidth}px`,
+          height: `${bodyRef.current.offsetHeight}px`,
         })
-      }, 1000);
+      }
+
+      window.addEventListener('resize', resizeBox);
+      setTimeout(resizeBox, 100);
     }
   }, [bodyRef]);
 
