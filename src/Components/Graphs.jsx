@@ -41,9 +41,11 @@ export default () => {
   useLayoutEffect(() => {
     if (bodyRef.current) {
       setTimeout(() => {
-        setGraphsDimensions({
-          width: `${bodyRef.current.offsetWidth}px`,
-          height: `${bodyRef.current.offsetHeight}px`,
+        window.addEventListener('resize', () => {
+          setGraphsDimensions({
+            width: `${bodyRef.current.offsetWidth}px`,
+            height: `${bodyRef.current.offsetHeight}px`,
+          })
         })
       }, 100);
     }
