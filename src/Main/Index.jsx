@@ -10,7 +10,7 @@ import {
 } from 'grommet';
 
 import theme from './theme';
-import reducers from './reducers';
+import reducers from '../redux/reducers';
 
 import AppBar from '../Components/AppBar';
 import Graphs from '../Components/Graphs';

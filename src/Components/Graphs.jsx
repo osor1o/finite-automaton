@@ -92,10 +92,10 @@ export default () => {
     <Box full flex overflow="hidden">
       <Box pad="small" gap="small" background='light-2'>
         <Text size="large">
-          Current State: { start.currentState }
+          Current State: {start.currentState}
         </Text>
         <Text size="large">
-          Last Input: { lastInput }
+          Last Input: {lastInput}
         </Text>
       </Box>
       <Box flex ref={bodyRef}>

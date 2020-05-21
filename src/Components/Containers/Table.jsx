@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { addTableItem } from './actions';
+import { addTableItem } from '../../redux/actions/table';
 
 import {
   Table, TableHeader, TableCell, TableBody, TableRow,
   Select, Button
 } from 'grommet';
 
-import SidebarBox from '../../Common/SidebarBox';
+import SidebarBox from '../Common/SidebarBox';
 
 export default () => {
   const dispatch = useDispatch();

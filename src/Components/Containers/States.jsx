@@ -2,33 +2,33 @@ import React, { useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { addInput } from './actions';
+import { addState } from '../../redux/actions/states';
 
 import { List, TextInput, Button } from 'grommet';
 
-import SidebarBox from '../../Common/SidebarBox';
+import SidebarBox from '../Common/SidebarBox';
 
 export default () => {
-  const inputs = useSelector((state) => state.input.list);
+  const states = useSelector((state) => state.state.list);
   const dispatch = useDispatch();
-  const [input, setInput] = useState('');
+  const [state, setState] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setInput('');
-    dispatch(addInput(input))
+    setState('');
+    dispatch(addState(state))
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <SidebarBox title="Inputs">
+      <SidebarBox title="States">
         <List
-          data={inputs}
+          data={states}
         />
         <TextInput
-          placeholder="Input"
-          value={input}
-          onChange={({ target }) => setInput(target.value)}
+          placeholder="State"
+          value={state}
+          onChange={({ target }) => setState(target.value)}
         />
         <Button
           type="submit"

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { handleCloseSidebar } from './actions';
+import { handleCloseSidebar } from '../../redux/actions/sidebar';
 
 import {
   Box,
@@ -13,12 +13,12 @@ import {
 
 import { FormClose } from 'grommet-icons';
 
-import If from '../../Common/If';
-import Inputs from '../Inputs';
-import States from '../States';
-import Table from '../Table';
-import Execution from '../Execution';
-import Start from '../Start';
+import If from '../Common/If';
+import Inputs from './Inputs';
+import States from './States';
+import Table from './Table';
+import Execution from './Execution';
+import Start from './Start';
 
 const Children = () => {
   return (

@@ -5,23 +5,23 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   setInitialState, setCurrentState, setBeforeState,
   setLastInput, setSubmitting, clearStart
-} from './actions';
+} from '../../redux/actions/start';
 
-import { handleCloseSidebar } from '../Sidebar/actions';
+import { handleCloseSidebar } from '../../redux/actions/sidebar';
 
-import { clearState } from '../States/actions';
+import { clearState } from '../../redux/actions/states';
 
-import { clearInput } from '../Inputs/actions';
+import { clearInput } from '../../redux/actions/inputs';
 
-import { clearTable } from '../Table/actions';
+import { clearTable } from '../../redux/actions/table';
 
-import { clearExecution } from '../Execution/actions';
+import { clearExecution } from '../../redux/actions/execution';
 
 import { Select, Button, RangeInput, Box } from 'grommet';
 
 import { Dashboard } from "grommet-icons";
 
-import SidebarBox from '../../Common/SidebarBox';
+import SidebarBox from '../Common/SidebarBox';
 
 export default () => {
   const dispatch = useDispatch();

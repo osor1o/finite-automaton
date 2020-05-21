@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { addExecution, removeExecution } from './actions';
+import { addExecution, removeExecution } from '../../redux/actions/execution';
 
 import { Box, List, Select, Button } from 'grommet';
 
 import { RadialSelected, Trash } from 'grommet-icons';
 
-import SidebarBox from '../../Common/SidebarBox';
+import SidebarBox from '../Common/SidebarBox';
 
 export default () => {
   const inputs = useSelector(({ input }) => input.list);
