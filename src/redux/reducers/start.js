@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   submitting: false,
   initialState: undefined,
+  finalState: undefined,
   beforeState: undefined,
   currentState: undefined,
   lastInput: undefined,
@@ -13,6 +14,12 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         initialState: action.payload,
         currentState: action.payload,
+        lastInput: undefined
+      };
+    case 'SET_FINAL_STATE':
+      return {
+        ...state,
+        finalState: action.payload,
         lastInput: undefined
       };
     case 'SET_CURRENT_STATE':

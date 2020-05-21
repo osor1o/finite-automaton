@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
-  setInitialState, setCurrentState, setBeforeState,
+  setInitialState, setFinalState, setCurrentState, setBeforeState,
   setLastInput, setSubmitting, clearStart
 } from '../../redux/actions/start';
 
@@ -76,6 +76,12 @@ export default () => {
           placeholder="Initial State"
           value={start.initialState}
           onChange={({ option }) => dispatch(setInitialState(option))}
+        />
+        <Select
+          options={states}
+          placeholder="Final State"
+          value={start.finalState}
+          onChange={({ option }) => dispatch(setFinalState(option))}
         />
         <Box direction="row" gap="small">
           <Dashboard />

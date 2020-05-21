@@ -4,6 +4,12 @@ export const setInitialState = (newInitialState) => {
   return { type: null };
 };
 
+export const setFinalState = (newFinalState) => {
+  if (newFinalState !== '')
+    return { type: 'SET_FINAL_STATE', payload: newFinalState };
+  return { type: null };
+};
+
 export const setCurrentState = (newCurrentState) => {
   return { type: 'SET_CURRENT_STATE', payload: newCurrentState };
 }

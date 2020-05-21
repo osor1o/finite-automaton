@@ -58,6 +58,8 @@ export default () => {
       return { ...baseReturn, color: { border: '#7159c1', }, borderWidth: 3 };
     if (start.initialState === state)
       return { ...baseReturn, borderWidth: 3 };
+    if (start.finalState === state)
+      return { ...baseReturn, color: { border: '#f00' }, borderWidth: 3 };
     return baseReturn;
   });
 
