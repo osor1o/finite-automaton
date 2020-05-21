@@ -29,6 +29,7 @@ export default () => {
           placeholder="State"
           value={state}
           onChange={({ target }) => setState(target.value)}
+          maxLength="1"
         />
         <Button
           type="submit"

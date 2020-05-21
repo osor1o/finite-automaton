@@ -1,6 +1,6 @@
 export const addState = (newState) => {
   if (newState !== '')
-    return { type: 'ADD_STATE', payload: newState.toUpperCase() };
+    return { type: 'ADD_STATE', payload: newState.charAt(0).toUpperCase() };
   return { type: null }
 };
 

@@ -29,6 +29,7 @@ export default () => {
           placeholder="Input"
           value={input}
           onChange={({ target }) => setInput(target.value)}
+          maxLength="1"
         />
         <Button
           type="submit"

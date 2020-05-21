@@ -2,6 +2,8 @@ const INITIAL_STATE = {
   submitting: false,
   initialState: undefined,
   finalState: undefined,
+  executions: [],
+  resultMessage: null,
   beforeState: undefined,
   currentState: undefined,
   lastInput: undefined,
@@ -22,6 +24,10 @@ export default (state = INITIAL_STATE, action) => {
         finalState: action.payload,
         lastInput: undefined
       };
+    case 'SET_EXECUTIONS':
+      return { ...state, executions: action.payload };
+    case 'SET_RESULT_MESSAGE':
+      return { ...state, resultMessage: action.payload };
     case 'SET_CURRENT_STATE':
       return { ...state, currentState: action.payload };
     case 'SET_BEFORE_STATE':

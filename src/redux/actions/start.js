@@ -10,6 +10,18 @@ export const setFinalState = (newFinalState) => {
   return { type: null };
 };
 
+export const setExecutions = (newExecutions) => {
+  return { type: 'SET_EXECUTIONS', payload: newExecutions.split('') };
+};
+
+export const setResultMessage = (newResultMessage) => {
+  if (newResultMessage === null)
+    return { type: 'SET_RESULT_MESSAGE', payload: newResultMessage };
+  if (newResultMessage.value && newResultMessage.type)
+    return { type: 'SET_RESULT_MESSAGE', payload: newResultMessage };
+  return { type: null };
+}
+
 export const setCurrentState = (newCurrentState) => {
   return { type: 'SET_CURRENT_STATE', payload: newCurrentState };
 }

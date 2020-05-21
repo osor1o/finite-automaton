@@ -8,6 +8,8 @@ import Graph from "react-graph-vis";
 
 import { v4 as uuidv4 } from 'uuid'
 
+import ResultMessage from './ResultMessage';
+
 const INITIAL_OPTIONS = {
   nodes: {
     font: {
@@ -100,6 +102,7 @@ export default () => {
           Last Input: {lastInput}
         </Text>
       </Box>
+      <ResultMessage />
       <Box flex ref={bodyRef}>
         <Graph key={uuidv4()} graph={graph} options={options} />
       </Box>

@@ -17,7 +17,6 @@ import If from '../Common/If';
 import Inputs from './Inputs';
 import States from './States';
 import Table from './Table';
-import Execution from './Execution';
 import Start from './Start';
 
 const Children = () => {
@@ -26,7 +25,6 @@ const Children = () => {
       <States />
       <Inputs />
       <Table />
-      <Execution />
       <Start />
     </Box>
   );
