@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  list: ['0', '1'],
+  list: [],
 };
 
 export default (state = INITIAL_STATE, action) => {
